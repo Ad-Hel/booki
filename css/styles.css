@@ -146,15 +146,19 @@ li{
     text-align: center;
     padding: 40px var(--space-md);
     border-top: solid 2px transparent;
-    /* font-size: 12px; */
 }
+
+.menu__entry:hover, .menu__entry:active{
+    color: var(--primary);
+}
+
+/* on hover */
 @media (min-width: 992px){
-    /* on hover */
     .menu__entry:hover{
         border-top: solid 2px var(--primary);
-        color: var(--primary);
     }
 }
+
 @media (max-width: 767px){
     .menu__entry{
         padding: var(--space-sm);
@@ -163,18 +167,17 @@ li{
     /* on touch */
     .menu__entry:active{
         border-bottom-color: var(--primary); 
-        color: var(--primary)
     }
 }
 @media (min-width: 768px) and (max-width: 991px){
     .menu__entry{
         padding: var(--space-sm);
         border-left: solid 4px transparent;
+        border-top: none;
     }
     /* on touch */
     .menu__entry:active{
         border-left-color: var(--primary);
-        color: var(--primary)
     }
 }
 
@@ -336,13 +339,11 @@ li{
     height: 40px;
     padding-right: var(--space-sm);
 }
-/* Filters entries on hover - desktop view */
-@media (min-width: 768px){
-    .filters__entry:hover{
-      background-color: var(--light);
-      border-color: var(--light); 
-      cursor: pointer; 
-    }
+/* Filters entries on hover */
+.filters__entry:hover, .filters__entry:active{
+    background-color: var(--light);
+    border-color: var(--light); 
+    cursor: pointer; 
 }
 
 /* FILTERS ICONS */
@@ -492,7 +493,7 @@ li{
 }
 @media (min-width: 768px) and (max-width: 991px){
     .activities{
-        margin-left: calc( (30% / -0.7) + 20px);
+        /* margin-left: calc( (30% / -0.7) + 20px); */
     }
 }
 
@@ -511,6 +512,11 @@ li{
     flex-flow: column wrap;
     height: 300px;
     align-content: space-between;
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .activities__content{
+        height: 600px;
+    }
 }
 @media (max-width: 767px){
     .activities__content{
@@ -594,12 +600,24 @@ li{
 .card--horizontal{
     flex-direction: row;
 }
-.card--column{
-    --four-column-gap: calc(var(--space-lg) * 3 / 4);
-    width: calc(25% - var(--four-column-gap));
-    margin-bottom: var(--space-lg);
-}
 
+@media (min-width: 992px){
+    .card--column{
+        /* multiply the chosen space by the number of gutters (3) and divides it by the number of columns (4) */
+        --four-column-gap: calc(var(--space-lg) * 3 / 4); 
+        /* the width is computed from the total width divided by the number of columns (4 so 25%) minus the wanted gap */
+        width: calc(25% - var(--four-column-gap));
+        margin-bottom: var(--space-lg);
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .card--column{
+        --three-column-gap: calc(var(--space-md) * 2 / 3);
+        width: calc(33% - var(--three-column-gap));
+        margin-bottom: var(--space-md);
+        flex: 1 1 30%;
+    }
+}
 @media (max-width: 767px){
     .card--column{
        width: 100%;
@@ -608,19 +626,24 @@ li{
 }
 
 /* VARIABLE HEIGHT TO ACHIEVE THE MASONRY EFFECT */
-
-.card--column:nth-child(3n+1){
-    flex: 1 1 100%;
+@media (min-width: 992px){
+    .card--column:nth-child(3n+1){
+        flex: 1 1 100%;
+    }
+    
+    .card--column:nth-child(2n+3){
+        flex: 2 3 auto;
+    }
+    
+    .card--column:nth-child(4n+2){
+        flex: 3 2 auto;
+    }
 }
-
-.card--column:nth-child(2n+3){
-    flex: 2 3 auto;
+@media (min-width: 768px) and (max-width: 991px){
+    .card--column:first-child{
+        flex: 1 1 100%;
+    }
 }
-
-.card--column:nth-child(4n+2){
-    flex: 3 2 auto;
-}
-
 /* CARD'S ELEMENTS */
 
 .card__img{
