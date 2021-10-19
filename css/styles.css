@@ -209,7 +209,6 @@ li{
 .search__bar{
     display: flex;
     font-size: 12px;
-    border-radius: var(--radius-sm);
     width: 300px;
 }
 @media (max-width: 991px){
@@ -219,9 +218,9 @@ li{
 }
 
 
-/* SEARCH PREPEND */
+/* SEARCH ICON */
 
-.search__localisation-icon{
+.search__location-icon{
     width: 40px;
     font-size: 14px;
     display: flex;
@@ -232,7 +231,7 @@ li{
     height: 40px;
 }
 @media (min-width: 768px) and (max-width: 991px){
-    .search__localisation-icon{
+    .search__location-icon{
         display: none;
     }
 }
@@ -248,11 +247,6 @@ li{
     font-weight: 800;
     font-size: 12px;
 }
-@media (max-width: 991px){
-    .search__input{
-        flex-grow: 1;
-    }
-}
 @media (min-width: 768px) and (max-width: 991px){
     .search__input{
         border-left-color: var(--secondary);
@@ -261,8 +255,7 @@ li{
 }
 .search__input:focus{
     outline: none;
-    border: solid 1px var(--primary);
-    border-right: none;
+    border-color:  var(--primary);
 }
 .search__input::placeholder{
     opacity: 100%;
@@ -270,7 +263,7 @@ li{
     font-size: 12px;
 }
 
-/* SEARCH APPEND */
+/* SEARCH BUTTON */
 
 .search__button{
     border: none;
@@ -337,7 +330,10 @@ li{
     display: flex;
     align-items: center;
     height: 40px;
+    padding-left: 0;
     padding-right: var(--space-sm);
+    background-color: white;
+    
 }
 /* Filters entries on hover */
 .filters__entry:hover, .filters__entry:active{
@@ -595,12 +591,13 @@ li{
     }
 }
 
-/*CARD'S VARIATION */
+/*CARD'S VARIATIONS */
 
 .card--horizontal{
     flex-direction: row;
 }
 
+/* .card--column width */
 @media (min-width: 992px){
     .card--column{
         /* multiply the chosen space by the number of gutters (3) and divides it by the number of columns (4) */
@@ -615,7 +612,6 @@ li{
         --three-column-gap: calc(var(--space-md) * 2 / 3);
         width: calc(33% - var(--three-column-gap));
         margin-bottom: var(--space-md);
-        flex: 1 1 30%;
     }
 }
 @media (max-width: 767px){
@@ -625,7 +621,7 @@ li{
     }
 }
 
-/* VARIABLE HEIGHT TO ACHIEVE THE MASONRY EFFECT */
+/* .card--column height */
 @media (min-width: 992px){
     .card--column:nth-child(3n+1){
         flex: 1 1 100%;
@@ -642,6 +638,9 @@ li{
 @media (min-width: 768px) and (max-width: 991px){
     .card--column:first-child{
         flex: 1 1 100%;
+    }
+    .card--column:nth-child(1n+4){
+        flex: 1 1 30%;
     }
 }
 /* CARD'S ELEMENTS */
@@ -661,10 +660,9 @@ li{
     justify-content: center;
     font-size: 12px;
     padding: 10px;
-    flex: 0 1 40px;
 }
 
-.card__content p{
+.card__text{
     margin: 5px 0;
 }
 
@@ -681,7 +679,6 @@ li{
     bottom: 0;
     left: 0;
     z-index: 1;
-    pointer-events: inherit;
     content: "";
     background-color: transparent; 
 }
