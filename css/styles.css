@@ -324,15 +324,17 @@ li{
 /* FILTERS ENTRIES */
 
 .filters__entry{
-    border: solid 2px var(--secondary);
-    border-left: 0;
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
     height: 40px;
     padding-left: 0;
     padding-right: var(--space-sm);
     background-color: white;
+    border: solid 2px var(--secondary);
+    border-left: 0;
+    border-radius: var(--radius-md);
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;  
     
 }
 /* Filters entries on hover */
